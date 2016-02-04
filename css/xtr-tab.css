@@ -41,6 +41,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	width: 300px;
 }
 .xtrTabMenu.center-align ul{
+	-webkit-justify-content: center;
 	justify-content: center;
 }
 .xtrTabMenu.left-align ul{
@@ -81,6 +82,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 }
 .xtrTabMenu.vertical ul{
 	flex-direction: column!important;
+	-webkit-flex-direction: column!important;
 	padding-left: 0px!important;
 }
 .xtrTabMenu li{
@@ -130,7 +132,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	border-bottom-width: 2px !important;
 	border-bottom-style: solid !important;
 
-	margin: -.6em -1em -.6em;
+	margin: -.6em -1.2em -.6em;
 	
 	overflow: hidden;
 
@@ -188,6 +190,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 
 
 .xtrTabMenu li > *  {
+    -webkit-align-self: center;
     align-self: center;
 }
 
