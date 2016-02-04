@@ -1,5 +1,10 @@
 .xtrTabMenu ul{	
-	display: flex!important;
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;  
+
 	background: #fff!important;
 	
 	-webkit-touch-callout: none!important;
@@ -8,6 +13,17 @@
     -moz-user-select: none!important;
     -ms-user-select: none!important;
     user-select: none!important;
+}
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, var, dl, dt, dd, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0px;
+    outline: 0px none;
+    font-weight: inherit;
+    font-style: inherit;
+    font-size: 100%;
+    font-family: inherit;
+}
+.xtrTabMenu li p{
+	margin: 1rem !important;
 }
 .xtrTabMenu.wide100 li{
 	width: 100px;
@@ -24,8 +40,11 @@
 .xtrTabMenu.wide300 li{
 	width: 300px;
 }
-.xtrTabMenu.center ul{
+.xtrTabMenu.center-align ul{
 	justify-content: center;
+}
+.xtrTabMenu.left-align ul{
+	padding-left: 0px !important;
 }
 .xtrTabMenu:not(.vertical) ul{
 	border-bottom-width: 2px !important;
@@ -114,7 +133,13 @@
 	margin: -.6em -1em -.6em;
 	
 	overflow: hidden;
-	display: flex;
+
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;  
+	
 	content: " ";
 }
 .xtrTabMenu li{	
