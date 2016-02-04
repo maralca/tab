@@ -1,0 +1,168 @@
+.xtrTabMenu ul{	
+	display: flex!important;
+	background: #fff!important;
+	
+	-webkit-touch-callout: none!important;
+    -webkit-user-select: none!important;
+    -khtml-user-select: none!important;
+    -moz-user-select: none!important;
+    -ms-user-select: none!important;
+    user-select: none!important;
+}
+.xtrTabMenu.wide100 li{
+	width: 100px;
+}
+.xtrTabMenu.wide150 li{
+	width: 150px;
+}
+.xtrTabMenu.wide200 li{
+	width: 200px;
+}
+.xtrTabMenu.wide250 li{
+	width: 250px;
+}
+.xtrTabMenu.wide300 li{
+	width: 300px;
+}
+.xtrTabMenu.center ul{
+	justify-content: center;
+}
+.xtrTabMenu:not(.vertical) ul{
+	border-bottom-width: 2px !important;
+	border-bottom-style: solid !important;
+
+    margin-top: 0.1rem !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    margin-bottom: 0.25rem !important;
+}
+.xtrTabMenu.vertical.left ul,
+.xtrTabMenu.vertical:not(.right) ul{
+	border-right-width: 2px !important;
+	border-right-style: solid !important;
+
+	float: left !important;
+	height: 80%;
+
+    margin-top: 0 !important;
+	margin-left: 0.1rem !important;
+	margin-right: 0.25rem !important;
+    margin-bottom: 0 !important;	
+}
+.xtrTabMenu.vertical.right ul{
+	border-left-width: 2px !important;
+	border-left-style: solid !important;
+
+	float: right !important;
+
+    margin-top: 0 !important;
+	margin-right: 0.1rem !important;
+	margin-left: 0.25rem !important;
+    margin-bottom: 0 !important;
+}
+.xtrTabMenu.vertical ul{
+	flex-direction: column!important;
+	padding-left: 0px!important;
+}
+.xtrTabMenu li{
+	cursor: pointer!important;
+}
+.xtrTabMenu li.heritage *{
+	color: inherit !important;
+}
+.xtrTabMenu.small li{	
+	padding: 0.125em !important;
+	font-size: 12px !important;
+}
+.xtrTabMenu:not(.small) li{
+	padding: 0.6em 1.2em!important;
+}
+.xtrTabMenu.vertical.left li,
+.xtrTabMenu.vertical:not(.right) li{
+	border-right-width: 2px !important;
+	border-right-style: solid !important;
+	
+	margin-top: 0px!important;
+	margin-right: -2px!important;
+	margin-left: 0px!important;
+	margin-bottom: 0px!important;
+}
+.xtrTabMenu.vertical.right li{
+	border-left-width: 2px !important;
+	border-left-style: solid !important;
+	
+	margin-top: 0px!important;
+	margin-left: -2px!important;
+	margin-right: 0px!important;
+	margin-bottom: 0px!important;
+}
+.xtrTabMenu:not(.vertical) li{
+	border-bottom-width: 2px !important;
+	border-bottom-style: solid !important;
+
+	margin-top: 0px!important;
+	margin-left: 0px!important;
+	margin-right: 0px!important;
+	margin-bottom: -2px!important;
+}
+.xtrTabMenu.vertical.divided li:after{
+	border:none !important;
+	
+	border-bottom-width: 2px !important;
+	border-bottom-style: solid !important;
+
+	margin: -.6em -1em -.6em;
+	
+	overflow: hidden;
+	display: flex;
+	content: " ";
+}
+.xtrTabMenu li{	
+	border:none !important;
+
+	border-radius: 0px!important;
+	
+	display: block !important;
+	width: auto;
+
+	color: #717171 !important;
+	
+	font-size: 14px !important;
+	font-weight: normal !important;
+	text-align: center !important;
+}
+
+.xtrTabMenu li{
+	border-color: inherit !important;
+}
+.xtrTabMenu.vertical.divided li:after{
+	border-color: inherit !important; 
+}
+.xtrTabMenu li:hover{
+	background: rgba(0, 0, 0, 0.03) none repeat scroll 0% 0%;
+	color: rgba(0, 0, 0, 0.95);
+}
+
+.xtrTabMenu.cyan ul{
+	border-color: rgba(120, 210, 210,.4)!important;
+}
+.xtrTabMenu:not(.cyan) ul{
+	border-color: rgba(210, 210, 210,.4)!important;
+}
+
+
+.xtrTabMenu li:hover{
+	border-color: rgba(0,0,0,.2) !important;
+}
+.xtrTabMenu li.active{
+	border-color: rgba(0,0,0,.6) !important;
+}
+.xtrTabMenu li:active{
+	border-color: rgba(0,0,0,.4) !important;
+}
+
+
+.xtrTabMenu li > *  {
+    align-self: center;
+}
+

@@ -1,0 +1,28 @@
+.xtrPaginacaoScript{
+	display: flex !important;		
+	width: 100% !important;
+}
+.xtrPaginacaoScript div{
+	display: flex !important;
+	padding: 1rem!important;
+}
+.xtrPaginacaoScript div:last-child{
+	margin-right: auto !important;
+}
+.xtrPaginacaoScript div:first-child{
+	margin-left: auto !important;
+}
+.xtrPaginacaoScript div:not(:first-child):not(:last-child){
+	border-radius: 0px !important;
+}
+.xtrPaginacaoScript div:first-child{
+	border-bottom-right-radius: 0px !important;
+	border-top-right-radius: 0px !important;
+}
+.xtrPaginacaoScript div:last-child{	
+	border-bottom-left-radius: 0px !important;
+	border-top-left-radius: 0px !important;
+}
+.xtrPaginacaoScript div:not(:first-child){
+	border-left:none !important;	
+}
