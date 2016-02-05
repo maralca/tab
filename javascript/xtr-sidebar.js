@@ -94,10 +94,7 @@ function SideBar(id){
             li.appendChild(p);
             ul.appendChild(li);
             tooltip.addTrigger(li,{
-                content: content,
-                offset:{
-                    y: 20
-                }
+                content: content
             });
         }
     };
