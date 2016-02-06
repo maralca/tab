@@ -163,11 +163,13 @@
 }
 
 .xtrTabMenu ul{
-	border-color: rgba(210, 210, 210,.4)!important;
+	border-color: #105CB6 !important;
+	/*border-color: rgba(0,0,0,.2) !important;*/
 }
 
 .xtrTabMenu li:hover{
 	border-color: rgba(0,0,0,.2) !important;
+	border
 }
 .xtrTabMenu li.active{
 	border-color: rgba(0,0,0,.6) !important;
