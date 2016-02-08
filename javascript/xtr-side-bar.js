@@ -22,7 +22,7 @@ function SideBar(id){
 
     compositeDatas = dataHandler.load();
 
-    tooltip = new XtrTooltip("sidebar_tooltip","left");
+    tooltip = new XtrTooltip("SIDEBAR_tooltip","left");
        
     ul = document.createElement("ul");
     document.querySelector("#SIDEBAR").appendChild(ul);

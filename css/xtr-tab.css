@@ -153,6 +153,8 @@
 
 .xtrTabMenu li{
 	border-color: inherit !important;
+
+	transition: .3s border, .5s background;
 }
 .xtrTabMenu.vertical.divided li:after{
 	border-color: inherit !important; 
