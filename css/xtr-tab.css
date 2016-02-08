@@ -154,6 +154,10 @@
 .xtrTabMenu li{
 	border-color: inherit !important;
 
+	-webkit-transition: .3s border, .5s background;
+    -moz-transition: .3s border, .5s background;
+    -ms-transition: .3s border, .5s background;
+    -o-transition: .3s border, .5s background;
 	transition: .3s border, .5s background;
 }
 .xtrTabMenu.vertical.divided li:after{
