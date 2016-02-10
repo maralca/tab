@@ -1,76 +1,146 @@
-	function XtrTab(id){
-		var xtrTabPai;
+function XtrTab(id,kwargs){
+	var containerTab;
+	var seletorTab,atributoTab,functionTab;
+	var tabs;
+	var jaChamados;
 
-		id = XtrGraficoUtil.isset(id) ? id : "#_xtr_tabs";
+	containerTab = document.querySelector(id);
+	jaChamados = {};
 
-		document.addEventListener("DOMContentLoaded", function(event) {
-			var xtrTabs,xtrTab;
-			var xtrTabIndex;
-			
-			var element;
-			
-			xtrTabPai = XtrQuery(id);
-			desactivateAll(true);
-			if(XtrGraficoUtil.isset(xtrTabPai)){
-				xtrTabs = xtrTabPai.children('[data-xtr-tab]');			
-				for(xtrTabIndex=0; xtrTabs.length > xtrTabIndex; xtrTabIndex++){
-					xtrTab = xtrTabs[xtrTabIndex];
-					xtrTab.addEventListener("click",function(event){
-						element = new XtrElement(this);
-						changeActive(element,true);				
-					});
-				}
-			}		
-		});
+	atributoTab = "data-tab-id";
+	functionTab = "data-tab-fn";
 
-		function changeActive(element,callOnLoad){
-			desactivateAll();
-			activate(element,callOnLoad);
-		}	
-		function changeActiveAndCall(element,callback){
-			desactivateAll();
-			activate(element);
+	if(XtrGraficoUtil.isobj(kwargs)){
+		if(XtrGraficoUtil.isset(kwargs.tab)){
+			atributoTab = kwargs.tab;
+		}
+	}
+	seletorTab = "["+atributoTab+"]";
+	tabs = containerTab.querySelectorAll(seletorTab);
+
+	for(tabIndex = 0; tabs.length > tabIndex; tabIndex++){
+		tab = tabs[tabIndex];
+		iniciar(tab);
+		if(tab.className.indexOf("ativa") >= 0){			
+			chamar(tab);	
+		}
+		else{
+			esconder(tab);
+		}
+	}
+
+	this.mostrarAtivarChamar = mostrarAtivarChamar;
+	this.mostrarAtivar = mostrarAtivar;
+	this.liberarChamada = liberarChamada;
+	this.bloquearChamada = bloquearChamada;
+
+	return this;
+
+	function mostrarAtivar(tab){
+		ativar(tab);
+		mostrar(tab);
+	}
+
+	function mostrarAtivarChamar(tab,callback){
+		var tabId;
+
+		tab = tab instanceof Node ? tab : getTab(tab);
+
+		tabId = tab.getAttribute(atributoTab);
+
+		esconderDesativarTodas();
+		ativar(tab);
+		mostrar(tab);
+		if(XtrGraficoUtil.iscallable(callback)){
 			callback();
 		}
-		function activate(element,callOnLoad){
-			var CallOnLoad = XtrGraficoUtil.isset(callOnLoad) ? callOnLoad : true;
-			if(!(element instanceof XtrElement)){
-				if(element instanceof Node){
-					element = new XtrElement(element);
-				}
-				else{
-					element = XtrQuery('[data-xtr-tab="'+element+'"]');
-				}
-			}
-			var target = element.target;
-			var tab = element;
-			tab.addClass('active');
-			target.show();
-			if(callOnLoad)
-				element.onLoad();	
+		else{
+			chamar(tab);
 		}
-		function desactivateAll(exceptActiveClass){
-			var exceptActiveClass = XtrGraficoUtil.isset(exceptActiveClass) ? exceptActiveClass : false;
-			var xtrTabPai = XtrQuery(id);
-			if(xtrTabPai!=null){
-				var xtrTabs = xtrTabPai.children('[data-xtr-tab]');
-				for(var xtrTabIndex=0; xtrTabs.length > xtrTabIndex; xtrTabIndex++){
-					var xtrTab = xtrTabs[xtrTabIndex];
-					var target = xtrTab.target;
-					if(exceptActiveClass ? !xtrTab.hasClass("active") : true){
-						xtrTab.removeClass("active");
-						target.hide();
-					}
-					else if(exceptActiveClass){
-						xtrTab.onLoad();
-					}
-				}
+	}
+	function getTab(value){
+		var tab;
+
+		tab = document.querySelector('['+atributoTab+'="'+value+'"]');
+
+		return tab;
+	}
+
+	function iniciar(tab){
+		tab.addEventListener("click",function(){
+			esconderDesativarTodas();
+			mostrar(this);
+			ativar(this);
+			chamar(this);
+		});
+	}
+	function esconderDesativarTodas(){
+		var tabs,tab;
+		var tabIndex;
+
+		tabs = containerTab.querySelectorAll(seletorTab);
+
+		for(tabIndex = 0; tabs.length > tabIndex; tabIndex++){
+			tab = tabs[tabIndex];
+			esconder(tab);
+			desativar(tab);
+		}
+	}
+	function ativar(tab){
+		desativar(tab);
+		tab.className += " ativa";
+	}
+	function desativar(tab){
+		tab.className = tab.className.replace(" ativa","");
+		tab.className = tab.className.replace("ativa ","");
+		tab.className = tab.className.replace("ativa","");
+
+		tab.className = tab.className.replace(" ativo","");
+		tab.className = tab.className.replace("ativo ","");
+		tab.className = tab.className.replace("ativo","");
+	}
+	function mostrar(tab){
+		var alvo;
+
+		alvo = tab.getAttribute(atributoTab);
+		alvo = document.getElementById(alvo);
+
+		alvo.className = alvo.className.replace(" tab escondida","");
+		alvo.className = alvo.className.replace("tab escondida ","");
+		alvo.className = alvo.className.replace("tab escondida","");
+	}
+	function esconder(tab){
+		var alvo;
+
+		alvo = tab.getAttribute(atributoTab);
+		alvo = document.getElementById(alvo);
+		mostrar(tab);
+		alvo.className += "  tab escondida";
+	}
+	function liberarChamada(tabId){
+		jaChamados[tabId] = false;
+	}
+	function bloquearChamada(tabId){
+		jaChamados[tabId] = true;
+	}
+	function chamar(tab){
+		var callback;
+		var tabId;
+		var jaChamado;
+
+		tabId = tab.getAttribute(atributoTab);
+
+		jaChamado = jaChamados[tabId];
+		jaChamado = XtrGraficoUtil.isset(jaChamado) ? jaChamado : false;
+
+		if(!jaChamado){
+			callback = tab.getAttribute(functionTab);
+			callback = eval(callback);
+			if(XtrGraficoUtil.iscallable(callback)){
+				callback(tab);
 			}
 		}
 
-		this.activate = activate;
-		this.changeActive = changeActive;
-		this.desactivateAll = desactivateAll;
-		this.changeActiveAndCall = changeActiveAndCall;
-		return this;	
+		bloquearChamada(tabId);
 	}
+}

@@ -18,11 +18,11 @@ function SideBar(id){
 
     var classePadraoLi;
 
-    classePadraoLi = "xtrTab-pequeno heritage";
+    classePadraoLi = "xtr tab pequeno herenca";
 
     compositeDatas = dataHandler.load();
 
-    tooltip = new XtrTooltip("SIDEBAR_tooltip","left");
+    tooltip = new XtrTooltip("SIDEBAR_tooltip","esquerda");
        
     ul = document.createElement("ul");
     document.querySelector("#SIDEBAR").appendChild(ul);
@@ -48,13 +48,13 @@ function SideBar(id){
             }
             compositeDataIndex = this.getAttribute("data-compositeData-index");
 
-            this.setAttribute("class",classePadraoLi+" active");
+            this.setAttribute("class",classePadraoLi+" ativa");
 
             compositeData = dataHandler.moveTo(compositeDataIndex).current();
 
             compositeDataHandler.override(compositeData);
 
-            xtrTab.changeActiveAndCall("_xtr_tab_grafico_principal",function(){
+            xtrTab.mostrarAtivarChamar("tab_exibir",function(){
 
                 generateWithLoading(compositeData);
 
@@ -103,7 +103,7 @@ function SideBar(id){
 
         desactiveAll();
         li = lis[index];
-        li.setAttribute("class",classePadraoLi+" active");
+        li.setAttribute("class",classePadraoLi+" ativa");
     }
     function desactiveAll(){
         var li;

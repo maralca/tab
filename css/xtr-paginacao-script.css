@@ -1,0 +1,4 @@
+[class*="xtr paginacao"] .escondida,
+[class*="xtr paginacao"] .escondido{
+	display: none !important;
+}
