@@ -93,6 +93,16 @@
 [class*="xtr tab menu"][class*="trezentos"] li{
 	width: 300px;
 }
+[class*="xtr tab menu"] li,
+[class*="xtr tab menu"][class*="padding normal"] li{
+	padding: 0.6em 1.2em!important;
+}
+[class*="xtr tab menu"][class*="padding dobrado"] li{
+	padding: 1.2em 2.4em!important;
+}
+[class*="xtr tab menu"][class*="padding reduzido"] li{	
+	padding: 0.15em 0.3em !important;
+}
 [class*="xtr tab menu"] li{	
 	border-color: inherit !important;
 
@@ -107,8 +117,6 @@
 	margin-bottom: -2px!important;
 
 	cursor: pointer!important;
-
-	padding: 0.6em 1.2em!important;
 	
 	display: block !important;
 
@@ -154,11 +162,6 @@
 }
 [class*="xtr tab menu"] li.heranca *{
 	color: inherit !important;
-}
-[class*="xtr tab menu"][class*="padding reduzido"] li{	
-	padding: 0.125em !important;
-	font-size: 12px !important;
-}[class*="xtr tab menu"] li:hover{
 }
 [class*="xtr tab menu"] li.ativa,
 [class*="xtr tab menu"] li.ativo,
