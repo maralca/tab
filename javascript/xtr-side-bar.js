@@ -1,4 +1,4 @@
-function SideBar(id){
+function SideBar(id,kwargs){
     var compositeDatas,compositeData;
     var compositeDataIndex;
 
@@ -14,6 +14,8 @@ function SideBar(id){
 
     var tooltip;
 
+    var allwaysfn;
+
     var tipo;
 
     var classePadraoLi;
@@ -21,6 +23,12 @@ function SideBar(id){
     classePadraoLi = "xtr tab pequeno herenca";
 
     compositeDatas = dataHandler.load();
+
+    allwaysfn = function(){};
+
+    if(XtrGraficoUtil.isobj(kwargs)){
+        allwaysfn = XtrGraficoUtil.isobj(kwargs["allways-fn"]) ? kwargs["allways-fn"] : function(){};
+    }
 
     tooltip = new XtrTooltip("SIDEBAR_tooltip","esquerda");
        
@@ -57,6 +65,7 @@ function SideBar(id){
             xtrTab.mostrarAtivarChamar("tab_exibir",function(){
 
                 generateWithLoading(compositeData);
+                allwaysfn();
 
             },false);
 

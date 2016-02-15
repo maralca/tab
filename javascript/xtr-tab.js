@@ -1,6 +1,6 @@
 function XtrTab(id,kwargs){
 	var containerTab;
-	var seletorTab,atributoTab,functionTab;
+	var seletorTab,atributoTab,functionTab,functionAllwaysTab;
 	var tabs;
 	var jaChamados;
 
@@ -9,6 +9,7 @@ function XtrTab(id,kwargs){
 
 	atributoTab = "data-tab-id";
 	functionTab = "data-tab-fn";
+	functionAllwaysTab = "data-tab-allways-fn";
 
 	if(XtrGraficoUtil.isobj(kwargs)){
 		if(XtrGraficoUtil.isset(kwargs.tab)){
@@ -72,6 +73,7 @@ function XtrTab(id,kwargs){
 			mostrar(this);
 			ativar(this);
 			chamar(this);
+			chamarSempre(this);
 		});
 	}
 	function esconderDesativarTodas(){
@@ -122,6 +124,15 @@ function XtrTab(id,kwargs){
 	}
 	function bloquearChamada(tabId){
 		jaChamados[tabId] = true;
+	}
+	function chamarSempre(tab){
+		var callback;
+		callback = tab.getAttribute(functionAllwaysTab);
+		if(XtrGraficoUtil.iscallable(callback)){
+			calback = eval(callback);
+			calback();
+		}
+
 	}
 	function chamar(tab){
 		var callback;
