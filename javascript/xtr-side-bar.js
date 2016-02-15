@@ -101,10 +101,16 @@ function SideBar(id,kwargs){
             p = document.createElement("p");
             p.innerHTML = "Grafico "+lis.length;                   
             li.appendChild(p);
+
+            a = document.createElement("a");
+            ul.appendChild(a);
             ul.appendChild(li);
+
             tooltip.addTrigger(li,{
                 content: content
             });
+
+            location.href = location.href.replace("#middle","") + "#middle";
         }
     };
     function active(index){
