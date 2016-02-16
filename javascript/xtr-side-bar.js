@@ -7,7 +7,7 @@ function SideBar(id,kwargs){
     var lis,li;
     var content;
 
-    var titulo;
+    var titulos,titulo;
     var series,serie;
     var serieIndex;
     var serieTitulos;
@@ -79,7 +79,8 @@ function SideBar(id,kwargs){
         });
 
         compositeData = compositeDatas[compositeDataIndex];
-        tipo = SuperModule().getDojoObject(compositeData.tipo,"tipos"); 
+        tipo = new SuperModule(); 
+        tipo = tipo.getDojoObject(compositeData.tipo,"tipos"); 
 
             
         if(XtrGraficoUtil.isset(tipo)){
@@ -101,9 +102,7 @@ function SideBar(id,kwargs){
             p = document.createElement("p");
             p.innerHTML = "Grafico "+lis.length;                   
             li.appendChild(p);
-
-            a = document.createElement("a");
-            ul.appendChild(a);
+            
             ul.appendChild(li);
 
             tooltip.addTrigger(li,{
