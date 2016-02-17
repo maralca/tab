@@ -27,7 +27,8 @@ function SideBar(id,kwargs){
     allwaysfn = function(){};
 
     if(XtrGraficoUtil.isobj(kwargs)){
-        allwaysfn = XtrGraficoUtil.isobj(kwargs["allways-fn"]) ? kwargs["allways-fn"] : function(){};
+        allwaysfn = kwargs["allways-fn"] || kwargs.allwaysfn || function(){};
+        adapterfn = kwargs['adapter-fn'] || kwargs.adapterfn || function(){};
     }
 
     tooltip = new XtrTooltip("SIDEBAR_tooltip","esquerda");
@@ -43,6 +44,7 @@ function SideBar(id,kwargs){
         li.setAttribute("id","sideBar_"+compositeDataIndex);
         li.setAttribute("data-compositeData-index",compositeDataIndex);
         li.setAttribute("class",classePadraoLi);
+
         li.addEventListener("click",function(){
             var li;
             var liIndex;
@@ -59,6 +61,7 @@ function SideBar(id,kwargs){
             this.setAttribute("class",classePadraoLi+" ativa");
 
             compositeData = dataHandler.moveTo(compositeDataIndex).current();
+            adapterfn(compositeData);
 
             compositeDataHandler.override(compositeData);
 
@@ -85,8 +88,8 @@ function SideBar(id,kwargs){
             
         if(XtrGraficoUtil.isset(tipo)){
             tipo = tipo.traducao.portuguesBr;                      
-            series = compositeData.series;  
-            content = "";
+            series = compositeData.series;
+            content = "<div class='flexbox column-reverse'>";
             for(serieIndex = 0; series.length > serieIndex; serieIndex++){
                 serie = series[serieIndex];
                 titulos = serie.titulo.replace("-"," ");
@@ -95,6 +98,8 @@ function SideBar(id,kwargs){
                 
                 content += "<p>"+titulo+"</p>";
             };
+            content += "</div>";
+            
             content += "<b>("+tipo+")</b>";
 
 
@@ -106,7 +111,7 @@ function SideBar(id,kwargs){
             ul.appendChild(li);
 
             tooltip.addTrigger(li,{
-                content: content
+                content: content,
             });
 
             location.href = location.href.replace("#middle","") + "#middle";
