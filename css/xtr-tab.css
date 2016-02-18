@@ -167,7 +167,9 @@
 [class*="xtr tab menu"] li.ativo,
 [class*="xtr tab menu"] li:active{
 	border-color: rgba(0,0,0,.6) !important;
-	border-color: rgba(0,0,0,.4) !important;
+	background-color: rgba(0,0,0,.05) !important;
+	-webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
+  			box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
 }
 [class*="xtr tab menu"] li > *  {
     -webkit-align-self: center;

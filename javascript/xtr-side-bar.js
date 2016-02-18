@@ -67,8 +67,8 @@ function SideBar(id,kwargs){
 
             xtrTab.mostrarAtivarChamar("tab_exibir",function(){
 
-                generateWithLoading(compositeData);
                 allwaysfn();
+                generateWithLoading(compositeData);
 
             },false);
 
