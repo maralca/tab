@@ -115,7 +115,7 @@ function SideBar(id,kwargs){
         ul.appendChild(li);
 
         tooltip.addTrigger(li,{
-            content: content,
+            content: content
         });
 
         //location.href = location.href.replace("#middle","") + "#middle";
