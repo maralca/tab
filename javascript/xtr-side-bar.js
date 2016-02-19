@@ -82,40 +82,43 @@ function SideBar(id,kwargs){
         });
 
         compositeData = compositeDatas[compositeDataIndex];
+
         tipo = new SuperModule(); 
+
         tipo = tipo.getDojoObject(compositeData.tipo,"tipos"); 
+        
+        if(!XtrGraficoUtil.isset(tipo)){
+            continue;
+        }  
+        tipo = tipo.traducao.portuguesBr;
 
+        series = compositeData.series;
+        content = "<div class='flexbox column-reverse'>";
+        for(serieIndex = 0; series.length > serieIndex; serieIndex++){
+            serie = series[serieIndex];
+            titulos = serie.titulo.replace("-"," ");
+            titulo = titulos;
+            titulo = XtrGraficoUtil.splitter(['Qtd de','Qtd'],titulo,1);
             
-        if(XtrGraficoUtil.isset(tipo)){
-            tipo = tipo.traducao.portuguesBr;                      
-            series = compositeData.series;
-            content = "<div class='flexbox column-reverse'>";
-            for(serieIndex = 0; series.length > serieIndex; serieIndex++){
-                serie = series[serieIndex];
-                titulos = serie.titulo.replace("-"," ");
-                titulo = titulos;
-                titulo = XtrGraficoUtil.splitter(['Qtd de','Qtd'],titulo,1);
-                
-                content += "<p>"+titulo+"</p>";
-            };
-            content += "</div>";
-            
-            content += "<b>("+tipo+")</b>";
+            content += "<p>"+titulo+"</p>";
+        };
+        content += "</div>";
+        
+        content += "<b>("+tipo+")</b>";
 
 
-            lis.push(li);
-            p = document.createElement("p");
-            p.innerHTML = "Grafico "+lis.length;                   
-            li.appendChild(p);
-            
-            ul.appendChild(li);
+        lis.push(li);
+        p = document.createElement("p");
+        p.innerHTML = "Grafico "+lis.length;                   
+        li.appendChild(p);
+        
+        ul.appendChild(li);
 
-            tooltip.addTrigger(li,{
-                content: content,
-            });
+        tooltip.addTrigger(li,{
+            content: content,
+        });
 
-            location.href = location.href.replace("#middle","") + "#middle";
-        }
+        //location.href = location.href.replace("#middle","") + "#middle";
     };
     function active(index){
         var li;
