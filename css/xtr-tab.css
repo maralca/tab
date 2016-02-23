@@ -33,7 +33,7 @@
 [class*="xtr tab menu"][class*="alinhamento a esquerda"] ul,
 [class*="xtr tab menu"][class*="alinhado a esquerda"] ul,
 [class*="xtr tab menu"][class*="alinhado esquerda"] ul{
-	padding-left: 2px !important;
+	padding-left: 0.3em !important;
 }
 [class*="xtr tab menu"][class*="alinhamento vertical"] ul{
 	flex-direction: column!important;
@@ -74,24 +74,7 @@
 	margin-bottom: 0px!important;
 }
 [class*="xtr tab menu"] li p{
-	margin: 1rem !important;
-}
-[class*="xtr tab menu"][class*="largura cem"] li{
-	width: 100px;
-}
-[class*="xtr tab menu"][class*="largura cento e cinquenta"] li,
-[class*="xtr tab menu"][class*="largura cento cinquenta"] li{
-	width: 150px;
-}
-[class*="xtr tab menu"][class*="largura duzentos"] li{
-	width: 200px;
-}
-[class*="xtr tab menu"][class*="duzentos e cinquenta"] li,
-[class*="xtr tab menu"][class*="duzentos cinquenta"] li{
-	width: 250px;
-}
-[class*="xtr tab menu"][class*="trezentos"] li{
-	width: 300px;
+	margin: 1.2em !important;
 }
 [class*="xtr tab menu"] li,
 [class*="xtr tab menu"][class*="padding normal"] li{
@@ -104,6 +87,8 @@
 	padding: 0.15em 0.3em !important;
 }
 [class*="xtr tab menu"] li{	
+	position: relative;
+
 	border-color: inherit !important;
 
 	border-bottom-width: 2px !important;

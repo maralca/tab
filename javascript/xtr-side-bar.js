@@ -17,10 +17,11 @@ function SideBar(id,kwargs){
     var allwaysfn;
 
     var tipo;
+    var nomeTipo;
 
     var classePadraoLi;
 
-    classePadraoLi = "xtr tab pequeno herenca";
+    classePadraoLi = "xtr tab herenca";
 
     compositeDatas = dataHandler.load();
 
@@ -86,11 +87,13 @@ function SideBar(id,kwargs){
         tipo = new SuperModule(); 
 
         tipo = tipo.getDojoObject(compositeData.tipo,"tipos"); 
-        
+
+
         if(!XtrGraficoUtil.isset(tipo)){
             continue;
         }  
-        tipo = tipo.traducao.portuguesBr;
+        nomeTipo = tipo.traducao.portuguesBr;
+        tipo = tipo.variavel;
 
         series = compositeData.series;
         content = "<div class='flexbox column-reverse'>";
@@ -104,12 +107,18 @@ function SideBar(id,kwargs){
         };
         content += "</div>";
         
-        content += "<b>("+tipo+")</b>";
+        content += "<b>("+nomeTipo+")</b>";
 
 
         lis.push(li);
         p = document.createElement("p");
-        p.innerHTML = "Grafico "+lis.length;                   
+
+        p.innerHTML = "<span class='xtr label'>"
+            +"<span>"+lis.length+"</span>"
+        +"</span>"
+        +ICONES_TIPOS[tipo];  
+
+
         li.appendChild(p);
         
         ul.appendChild(li);
