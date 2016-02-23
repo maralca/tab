@@ -114,6 +114,10 @@ function SideBar(id,kwargs){
         lis.push(li);
         p = document.createElement("p");
 
+        if(xtrGrafico.organize.first == lis.length){
+            li.setAttribute("data-compositeData-first",true);
+        }
+
         var n = lis.length.toString();
         var ii;
         var x = '';
