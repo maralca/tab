@@ -109,12 +109,22 @@ function SideBar(id,kwargs){
         
         content += "<b>("+nomeTipo+")</b>";
 
+        var chars ='abcdefghijklmnopqrstuvwxyz';
 
         lis.push(li);
         p = document.createElement("p");
 
+        var n = lis.length.toString();
+        var ii;
+        var x = '';
+        for(var i = 0; n.length > i; i++){
+            ii = n[i];
+            ii = parseInt(ii) - 1;
+            x += chars[ii].toUpperCase();
+        }
+
         p.innerHTML = "<span class='xtr label'>"
-            +"<span>"+lis.length+"</span>"
+            +"<span>"+x+"</span>"
         +"</span>"
         +ICONES_TIPOS[tipo];  
 
