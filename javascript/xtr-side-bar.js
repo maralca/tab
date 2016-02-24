@@ -101,7 +101,7 @@ function SideBar(id,kwargs){
             serie = series[serieIndex];
             titulos = serie.titulo.replace("-"," ");
             titulo = titulos;
-            titulo = XtrGraficoUtil.splitter(['Qtd de','Qtd'],titulo,1);
+            //titulo = XtrGraficoUtil.splitter(['Qtd de','Qtd'],titulo,1);
             
             content += "<p>"+titulo+"</p>";
         };
@@ -127,7 +127,27 @@ function SideBar(id,kwargs){
             x += chars[ii].toUpperCase();
         }
 
-        p.innerHTML = "<span class='xtr label'>"
+        var cor = '';
+
+        switch(n % 5){
+            case 0:
+                cor = "roxo"
+                break;
+            case 1:
+                cor = "verde"
+                break;
+            case 2:
+                cor = "vermelho"
+                break;
+            case 3:
+                cor = "azul"
+                break;
+            case 4:
+                cor = "amarelo"
+                break;
+        }
+
+        p.innerHTML = "<span class='xtr label "+cor+"'>"
             +"<span>"+x+"</span>"
         +"</span>"
         +ICONES_TIPOS[tipo];  
